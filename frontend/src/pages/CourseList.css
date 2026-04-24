@@ -100,3 +100,10 @@
   color: #4361ee;
   font-weight: 600;
 }
+
+/* Responsive tweaks for smaller screens */
+@media (max-width: 768px) {
+  .course-grid {
+    grid-template-columns: repeat(2, minmax(480px, 1fr));
+  }
+}
