@@ -1,0 +1,19 @@
+.course-form-page h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.course-form {
+  background: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 720px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}

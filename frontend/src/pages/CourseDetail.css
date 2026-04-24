@@ -1,0 +1,117 @@
+.course-detail {
+  max-width: 800px;
+}
+
+.course-header {
+  margin-bottom: 2rem;
+}
+
+.course-meta-tags {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tag.category {
+  background: #e8ecf5;
+  color: #4361ee;
+}
+
+.tag.duration {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.tag.seats {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.tag.seats.full {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+.course-detail h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-detail .course-instructor {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.25rem;
+}
+
+.course-detail .course-date {
+  font-size: 0.95rem;
+  color: #888;
+}
+
+.course-body {
+  margin-bottom: 2.5rem;
+}
+
+.course-description-section,
+.course-content-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.course-description-section h2,
+.course-content-section h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.course-description-section p {
+  color: #555;
+  line-height: 1.7;
+}
+
+.course-content {
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: #444;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Registration form */
+
+.registration-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.75rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.registration-section h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+}
+
+.registration-form {
+  max-width: 420px;
+}
+
+.course-full-message {
+  color: #c62828;
+  font-weight: 500;
+  background: #fce4ec;
+  padding: 1rem;
+  border-radius: 6px;
+}

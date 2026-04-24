@@ -1,0 +1,17 @@
+.registration-list-page h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.course-subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.registration-count {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}

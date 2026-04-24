@@ -1,0 +1,17 @@
+.admin-course-list h1 {
+  font-size: 1.8rem;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 0.75rem;
+}
