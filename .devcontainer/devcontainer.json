@@ -1,0 +1,63 @@
+{
+  "name": "AI Workshop Project",
+  "image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye",
+
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21",
+      "jdkDistro": "ms",
+      "installMaven": true,
+      "mavenVersion": "3.9"
+    }
+  },
+
+  // Forward backend (Spring Boot) and frontend (Vite) ports
+  "forwardPorts": [8080, 5173],
+  "portsAttributes": {
+    "8080": {
+      "label": "Backend (Spring Boot)",
+      "onAutoForward": "notify"
+    },
+    "5173": {
+      "label": "Frontend (Vite)",
+      "onAutoForward": "openBrowser"
+    }
+  },
+
+  // Install frontend dependencies after the container is created
+  "postCreateCommand": "cd frontend && npm install",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // Java & Spring Boot
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-spring-boot",
+        "vscjava.vscode-spring-initializr",
+        "vscjava.vscode-spring-boot-dashboard",
+        // Frontend
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        // General
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-21",
+            "default": true
+          }
+        ],
+        "java.compile.nullAnalysis.mode": "automatic",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[java]": {
+          "editor.defaultFormatter": "redhat.java"
+        }
+      }
+    }
+  }
+}
