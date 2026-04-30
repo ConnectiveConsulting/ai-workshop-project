@@ -39,6 +39,10 @@ dist/
 # Maven build output
 target/
 
+# Frontend build output copied into the Spring Boot JAR by
+# ai-workshop-infrastructure/hosting/Deploy-Apps.ps1 at deploy time.
+backend/src/main/resources/static/
+
 # IDE / Editor
 .claude/
 .idea/
