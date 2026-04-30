@@ -32,12 +32,18 @@ public class RegistrationController {
      * Request body: { "name": "...", "email": "..." }
      */
     @PostMapping("/api/courses/{courseId}/registrations")
-    public ResponseEntity<Registration> register(
+    public ResponseEntity<?> register(
             @PathVariable Long courseId,
             @RequestBody Map<String, String> body) {
 
+        String validationMessage = validateRegistrationPayload(body);
+        if (validationMessage != null) {
+            return badRequest(validationMessage);
+        }
+
         String name = body.get("name");
         String email = body.get("email");
+
         Registration registration = registrationService.register(courseId, name, email);
         return ResponseEntity.status(HttpStatus.CREATED).body(registration);
     }
@@ -50,5 +56,49 @@ public class RegistrationController {
         }
         registrationService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    private String validateRegistrationPayload(Map<String, String> body) {
+        if (body == null) {
+            return "Registration payload is required";
+        }
+
+        String name = body.get("name");
+        String email = body.get("email");
+
+        String message = requireField("name", name);
+        if (message != null) {
+            return message;
+        }
+        message = requireField("email", email);
+        if (message != null) {
+            return message;
+        }
+        message = validateMaxLength("name", name, Registration.NAME_MAX_LENGTH);
+        if (message != null) {
+            return message;
+        }
+
+        return null;
+    }
+
+    private String requireField(String fieldName, String value) {
+        if (value == null || value.isBlank()) {
+            return "Field '" + fieldName + "' is required";
+        }
+
+        return null;
+    }
+
+    private String validateMaxLength(String fieldName, String value, int maxLength) {
+        if (value != null && value.length() > maxLength) {
+            return "Field '" + fieldName + "' must be at most " + maxLength + " characters";
+        }
+
+        return null;
+    }
+
+    private ResponseEntity<Map<String, String>> badRequest(String message) {
+        return ResponseEntity.badRequest().body(Map.of("message", message));
     }
 }

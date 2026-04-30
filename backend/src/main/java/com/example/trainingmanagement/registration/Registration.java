@@ -3,6 +3,7 @@ package com.example.trainingmanagement.registration;
 import com.example.trainingmanagement.course.Course;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Check;
 import java.time.LocalDateTime;
 
 /**
@@ -10,7 +11,14 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "registrations")
+@Check(
+    name = "chk_registrations_field_lengths",
+    constraints = "length(name) <= 255 and length(email) <= 255"
+)
 public class Registration {
+
+    public static final int NAME_MAX_LENGTH = 255;
+    public static final int EMAIL_MAX_LENGTH = 255;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +29,10 @@ public class Registration {
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = NAME_MAX_LENGTH)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = EMAIL_MAX_LENGTH)
     private String email;
 
     private LocalDateTime registeredAt;

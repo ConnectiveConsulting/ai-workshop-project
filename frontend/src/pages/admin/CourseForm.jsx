@@ -115,8 +115,8 @@ export default function CourseForm() {
             name="description"
             value={form.description}
             onChange={handleChange}
-            maxLength={2000}
             rows={4}
+            maxLength={2000}
             required
           />
         </div>
@@ -130,6 +130,7 @@ export default function CourseForm() {
               type="text"
               value={form.instructor}
               onChange={handleChange}
+              maxLength={255}
             />
           </div>
 
@@ -141,6 +142,7 @@ export default function CourseForm() {
               type="text"
               value={form.category}
               onChange={handleChange}
+              maxLength={255}
               placeholder="e.g. Development, DevOps, Cloud"
             />
           </div>
@@ -166,6 +168,7 @@ export default function CourseForm() {
               type="text"
               value={form.duration}
               onChange={handleChange}
+              maxLength={255}
               placeholder="e.g. 2 days, 4 hours"
             />
           </div>
@@ -192,6 +195,7 @@ export default function CourseForm() {
             value={form.content}
             onChange={handleChange}
             rows={10}
+            maxLength={10000}
             placeholder="Course outline, syllabus, or description (plain text or Markdown)"
           />
         </div>
