@@ -142,7 +142,6 @@ export default function CourseDetail() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                maxLength={255}
                 placeholder="you@example.com"
                 required
               />

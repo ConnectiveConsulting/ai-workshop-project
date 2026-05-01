@@ -7,7 +7,8 @@ export default function CourseList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const loadCourses = () => {
+    setLoading(true);
     fetch('/api/courses')
       .then((res) => {
         if (!res.ok) throw new Error('Failed to load courses');
@@ -21,7 +22,20 @@ export default function CourseList() {
         setError(err.message);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    loadCourses();
   }, []);
+
+  const handleSeed = () => {
+    if (!window.confirm('This will clear all existing courses and registrations and load sample data. Continue?')) return;
+
+    fetch('/api/seed', { method: 'POST' })
+      .then((res) => res.json())
+      .then(() => loadCourses())
+      .catch((err) => alert(`Seed failed: ${err.message}`));
+  };
 
   if (loading) return <p className="status-message">Loading courses...</p>;
   if (error) return <p className="status-message error">Error: {error}</p>;
@@ -32,7 +46,13 @@ export default function CourseList() {
       {courses.length === 0 ? (
         <p className="status-message">
           No courses yet.{' '}
-          <a href="#" onClick={(e) => { e.preventDefault(); seedData(); }}>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              handleSeed();
+            }}
+          >
             Seed sample data
           </a>
         </p>

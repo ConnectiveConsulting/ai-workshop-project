@@ -13,12 +13,12 @@ import java.time.LocalDateTime;
 @Table(name = "registrations")
 @Check(
     name = "chk_registrations_field_lengths",
-    constraints = "length(name) <= 255 and length(email) <= 255"
+    constraints = "length(name) <= 255 and length(email) <= 100"
 )
 public class Registration {
 
     public static final int NAME_MAX_LENGTH = 255;
-    public static final int EMAIL_MAX_LENGTH = 255;
+    public static final int EMAIL_MAX_LENGTH = 100;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
