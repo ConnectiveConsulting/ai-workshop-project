@@ -237,21 +237,21 @@ public class SeedController {
 
         // Create sample registrations
         registrationRepository.saveAll(List.of(
-            new Registration(courses.get(0), "Sarah Connor", "sarah.connor@example.com", LocalDateTime.now().minusDays(10)),
-            new Registration(courses.get(0), "John Reese", "j.reese@example.com", LocalDateTime.now().minusDays(9)),
-            new Registration(courses.get(0), "Amy Pond", "amy.pond@example.com", LocalDateTime.now().minusDays(8)),
-            new Registration(courses.get(1), "Bruce Wayne", "bruce@wayneenterprises.com", LocalDateTime.now().minusDays(7)),
-            new Registration(courses.get(1), "Diana Prince", "diana.prince@example.com", LocalDateTime.now().minusDays(6)),
-            new Registration(courses.get(2), "Peter Parker", "p.parker@dailybugle.com", LocalDateTime.now().minusDays(5)),
-            new Registration(courses.get(2), "Mary Watson", "mwatson@example.com", LocalDateTime.now().minusDays(5)),
-            new Registration(courses.get(3), "Tony Stark", "tony@starkindustries.com", LocalDateTime.now().minusDays(4)),
-            new Registration(courses.get(4), "Natasha Romanoff", "n.romanoff@example.com", LocalDateTime.now().minusDays(3)),
-            new Registration(courses.get(4), "Steve Rogers", "steve.rogers@example.com", LocalDateTime.now().minusDays(3)),
-            new Registration(courses.get(5), "Lena Luthor", "lena@lcorp.com", LocalDateTime.now().minusDays(2)),
-            new Registration(courses.get(6), "James Rhodes", "j.rhodes@example.com", LocalDateTime.now().minusDays(1)),
-            new Registration(courses.get(7), "Sam Wilson", "sam.wilson@example.com", LocalDateTime.now()),
-            new Registration(courses.get(7), "Wanda Maximoff", "wanda@example.com", LocalDateTime.now()),
-            new Registration(courses.get(7), "Vision Android", "vision@example.com", LocalDateTime.now())
+            new Registration(courses.get(0), "Sarah Connor", "sarah.connor@example.com", "+1 (555) 100-0001", LocalDateTime.now().minusDays(10)),
+            new Registration(courses.get(0), "John Reese", "j.reese@example.com", "+1 (555) 100-0002", LocalDateTime.now().minusDays(9)),
+            new Registration(courses.get(0), "Amy Pond", "amy.pond@example.com", "+1 (555) 100-0003", LocalDateTime.now().minusDays(8)),
+            new Registration(courses.get(1), "Bruce Wayne", "bruce@wayneenterprises.com", "+1 (555) 200-0001", LocalDateTime.now().minusDays(7)),
+            new Registration(courses.get(1), "Diana Prince", "diana.prince@example.com", "+1 (555) 200-0002", LocalDateTime.now().minusDays(6)),
+            new Registration(courses.get(2), "Peter Parker", "p.parker@dailybugle.com", "+1 (555) 300-0001", LocalDateTime.now().minusDays(5)),
+            new Registration(courses.get(2), "Mary Watson", "mwatson@example.com", "+1 (555) 300-0002", LocalDateTime.now().minusDays(5)),
+            new Registration(courses.get(3), "Tony Stark", "tony@starkindustries.com", "+1 (555) 400-0001", LocalDateTime.now().minusDays(4)),
+            new Registration(courses.get(4), "Natasha Romanoff", "n.romanoff@example.com", "+1 (555) 500-0001", LocalDateTime.now().minusDays(3)),
+            new Registration(courses.get(4), "Steve Rogers", "steve.rogers@example.com", "+1 (555) 500-0002", LocalDateTime.now().minusDays(3)),
+            new Registration(courses.get(5), "Lena Luthor", "lena@lcorp.com", "+1 (555) 600-0001", LocalDateTime.now().minusDays(2)),
+            new Registration(courses.get(6), "James Rhodes", "j.rhodes@example.com", "+1 (555) 700-0001", LocalDateTime.now().minusDays(1)),
+            new Registration(courses.get(7), "Sam Wilson", "sam.wilson@example.com", "+1 (555) 800-0001", LocalDateTime.now()),
+            new Registration(courses.get(7), "Wanda Maximoff", "wanda@example.com", "+1 (555) 800-0002", LocalDateTime.now()),
+            new Registration(courses.get(7), "Vision Android", "vision@example.com", "+1 (555) 800-0003", LocalDateTime.now())
         ));
 
         return ResponseEntity.ok(Map.of(

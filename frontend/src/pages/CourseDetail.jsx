@@ -14,6 +14,7 @@ export default function CourseDetail() {
   // Registration form state
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState(null);
 
@@ -43,10 +44,17 @@ export default function CourseDetail() {
     setSubmitting(true);
     setFormError(null);
 
+    const phonePattern = /^[0-9 +\-()\s]+$/;
+    if (!phonePattern.test(phone)) {
+      setFormError('Phone number may only contain digits, spaces, +, -, or parentheses.');
+      setSubmitting(false);
+      return;
+    }
+
     fetch(`/api/courses/${id}/registrations`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email }),
+      body: JSON.stringify({ name, email, phone }),
     })
       .then((res) => {
         if (res.status === 409) throw new Error('This course is full.');
@@ -143,6 +151,20 @@ export default function CourseDetail() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="phone">Phone Number</label>
+              <input
+                id="phone"
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                maxLength={25}
+                placeholder="+1 (555) 123-4567"
+                pattern="[0-9 +\-()\s]+"
+                title="Phone number may only contain digits, spaces, +, -, or parentheses."
                 required
               />
             </div>

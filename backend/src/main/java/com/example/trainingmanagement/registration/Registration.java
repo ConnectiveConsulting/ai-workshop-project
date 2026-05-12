@@ -13,12 +13,13 @@ import java.time.LocalDateTime;
 @Table(name = "registrations")
 @Check(
     name = "chk_registrations_field_lengths",
-    constraints = "length(name) <= 255 and length(email) <= 100"
+    constraints = "length(name) <= 255 and length(email) <= 100 and length(phone) <= 25"
 )
 public class Registration {
 
     public static final int NAME_MAX_LENGTH = 255;
     public static final int EMAIL_MAX_LENGTH = 100;
+    public static final int PHONE_MAX_LENGTH = 25;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,16 +36,20 @@ public class Registration {
     @Column(nullable = false, length = EMAIL_MAX_LENGTH)
     private String email;
 
+    @Column(nullable = false, length = PHONE_MAX_LENGTH)
+    private String phone;
+
     private LocalDateTime registeredAt;
 
     // --- Constructors ---
 
     public Registration() {}
 
-    public Registration(Course course, String name, String email, LocalDateTime registeredAt) {
+    public Registration(Course course, String name, String email, String phone, LocalDateTime registeredAt) {
         this.course = course;
         this.name = name;
         this.email = email;
+        this.phone = phone;
         this.registeredAt = registeredAt;
     }
 
@@ -66,6 +71,9 @@ public class Registration {
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
     public LocalDateTime getRegisteredAt() { return registeredAt; }
     public void setRegisteredAt(LocalDateTime registeredAt) { this.registeredAt = registeredAt; }
