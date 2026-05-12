@@ -44,7 +44,7 @@ export default function CourseDetail() {
     setSubmitting(true);
     setFormError(null);
 
-    const phonePattern = /^[0-9 +\-()\s]+$/;
+    const phonePattern = /^[0-9 +\-()]+$/;
     if (!phonePattern.test(phone)) {
       setFormError('Phone number may only contain digits, spaces, +, -, or parentheses.');
       setSubmitting(false);
@@ -163,7 +163,7 @@ export default function CourseDetail() {
                 onChange={(e) => setPhone(e.target.value)}
                 maxLength={25}
                 placeholder="+1 (555) 123-4567"
-                pattern="[0-9 +\-()\s]+"
+                pattern="[0-9 +\-()]+"
                 title="Phone number may only contain digits, spaces, +, -, or parentheses."
                 required
               />

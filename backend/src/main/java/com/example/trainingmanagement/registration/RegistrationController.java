@@ -97,7 +97,7 @@ public class RegistrationController {
     }
 
     private String validatePhoneCharacters(String phone) {
-        if (phone != null && !phone.matches("[0-9 +\\-()]+")) {
+        if (phone != null && !phone.matches("[0-9 +()-]+")) {
             return "Field 'phone' contains invalid characters. Use digits, spaces, +, -, or parentheses only.";
         }
         return null;
