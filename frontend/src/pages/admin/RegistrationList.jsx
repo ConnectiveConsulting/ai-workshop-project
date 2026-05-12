@@ -70,6 +70,7 @@ export default function RegistrationList() {
               <th>#</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Phone</th>
               <th>Registered At</th>
               <th>Actions</th>
             </tr>
@@ -82,6 +83,7 @@ export default function RegistrationList() {
                 <td>
                   <a href={`mailto:${reg.email}`}>{reg.email}</a>
                 </td>
+                <td>{reg.phone || '—'}</td>
                 <td>
                   {reg.registeredAt
                     ? new Date(reg.registeredAt).toLocaleString('en-US', {

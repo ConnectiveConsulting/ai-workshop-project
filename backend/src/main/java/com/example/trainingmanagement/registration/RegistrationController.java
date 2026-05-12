@@ -43,8 +43,9 @@ public class RegistrationController {
 
         String name = body.get("name");
         String email = body.get("email");
+        String phone = body.get("phone");
 
-        Registration registration = registrationService.register(courseId, name, email);
+        Registration registration = registrationService.register(courseId, name, email, phone);
         return ResponseEntity.status(HttpStatus.CREATED).body(registration);
     }
 
@@ -65,6 +66,7 @@ public class RegistrationController {
 
         String name = body.get("name");
         String email = body.get("email");
+        String phone = body.get("phone");
 
         String message = requireField("name", name);
         if (message != null) {
@@ -74,11 +76,30 @@ public class RegistrationController {
         if (message != null) {
             return message;
         }
+        message = requireField("phone", phone);
+        if (message != null) {
+            return message;
+        }
         message = validateMaxLength("name", name, Registration.NAME_MAX_LENGTH);
         if (message != null) {
             return message;
         }
+        message = validateMaxLength("phone", phone, Registration.PHONE_MAX_LENGTH);
+        if (message != null) {
+            return message;
+        }
+        message = validatePhoneCharacters(phone);
+        if (message != null) {
+            return message;
+        }
 
+        return null;
+    }
+
+    private String validatePhoneCharacters(String phone) {
+        if (phone != null && !phone.matches("[0-9 +()-]+")) {
+            return "Field 'phone' contains invalid characters. Use digits, spaces, +, -, or parentheses only.";
+        }
         return null;
     }
 

@@ -41,7 +41,7 @@ public class RegistrationService {
      * Throws 404 if the course doesn't exist.
      * Throws 409 if the course is already at capacity.
      */
-    public Registration register(Long courseId, String name, String email) {
+    public Registration register(Long courseId, String name, String email, String phone) {
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found"));
 
@@ -50,7 +50,7 @@ public class RegistrationService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Course is full");
         }
 
-        Registration registration = new Registration(course, name, email, LocalDateTime.now());
+        Registration registration = new Registration(course, name, email, phone, LocalDateTime.now());
         return registrationRepository.save(registration);
     }
 
